@@ -1,0 +1,17 @@
+name: PyParkour
+version: 2.3
+main: fn_pyto_parkour.Main
+api-version: 1.21
+depend: [PlaceholderAPI]
+commands:
+  parkour:
+    description: System parkoura
+    usage: /parkour help
+
+permissions:
+  pyparkour.use:
+    description: Pozwala na granie i komendy gracza (help, wyjscie)
+    default: true
+  pyparkour.admin:
+    description: Pozwala na budowanie i reload
+    default: op

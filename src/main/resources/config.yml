@@ -1,0 +1,36 @@
+# ==================================
+#    PyParkour - Konfiguracja
+# ==================================
+
+void-y: -64
+
+messages:
+  start: "&a&lSTART! &7Powodzenia!"
+  checkpoint: "&a✔ Zapisano punkt kontrolny!"
+  fail: "&cSpadłeś! &7Powrót do checkpointu."
+  finish: "&6&lGRATULACJE! &7Ukończyłeś parkour w czasie: &e%time%"
+  broadcast: "&6%player% &7ukończył parkour w czasie &e%time%&7!"
+  actionbar-timer: "&6Czas: &e%time%"
+  leave: "&cZrezygnowałeś z parkoura."
+  not-playing: "&cPrzecież nie robisz parkoura!"
+
+  help-header: "&8&m--------&r &6PyParkour Pomoc &8&m--------"
+  help-player:
+    - "&e/parkour wyjscie &7- Przerwij parkour"
+  help-admin:
+    - "&c--- Panel Admina ---"
+    - "&e/parkour setup &7- Weź narzędzia do budowania"
+    - "&e/parkour setvoid &7- Ustaw poziom śmierci"
+    - "&e/parkour reload &7- Przeładuj plugin"
+
+sounds:
+  start: "BLOCK_NOTE_BLOCK_PLING"
+  checkpoint: "ENTITY_EXPERIENCE_ORB_PICKUP"
+  fail: "ENTITY_ENDERMAN_TELEPORT"
+  finish: "UI_TOAST_CHALLENGE_COMPLETE"
+  leave: "BLOCK_NOTE_BLOCK_BASS"
+
+data:
+  start: null
+  end: null
+  checkpoints: []
