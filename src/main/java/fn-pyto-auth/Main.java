@@ -65,12 +65,12 @@ public class Main extends JavaPlugin implements Listener, CommandExecutor, TabCo
     public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
         List<String> suggestions = new ArrayList<>();
         if (args.length == 1) {
-            // Każdy może widzieć te komendy
+            
             if (sender.hasPermission("pyparkour.use")) {
                 suggestions.add("help");
                 suggestions.add("wyjscie");
             }
-            // Tylko admin widzi te
+            
             if (sender.hasPermission("pyparkour.admin")) {
                 suggestions.add("setup");
                 suggestions.add("setvoid");
@@ -86,19 +86,19 @@ public class Main extends JavaPlugin implements Listener, CommandExecutor, TabCo
         if (!(sender instanceof Player)) return true;
         Player p = (Player) sender;
 
-        // 1. Sprawdzamy podstawowe uprawnienie gracza
+        
         if (!p.hasPermission("pyparkour.use")) {
             p.sendMessage(color("&cBrak uprawnien do uzywania parkoura!"));
             return true;
         }
 
-        // HELP
+        
         if (args.length == 0 || args[0].equalsIgnoreCase("help")) {
             sendHelp(p);
             return true;
         }
 
-        // WYJŚCIE
+        
         if (args[0].equalsIgnoreCase("wyjscie") || args[0].equalsIgnoreCase("leave")) {
             if (timers.containsKey(p.getUniqueId())) {
                 timers.remove(p.getUniqueId());
@@ -112,8 +112,7 @@ public class Main extends JavaPlugin implements Listener, CommandExecutor, TabCo
             return true;
         }
 
-        // --- STREFA ADMINA ---
-        // Tutaj sprawdzamy wyższe uprawnienie
+       
         if (!p.hasPermission("pyparkour.admin")) {
             p.sendMessage(color("&cKomenda dostepna tylko dla administratorow!"));
             return true;
@@ -144,14 +143,14 @@ public class Main extends JavaPlugin implements Listener, CommandExecutor, TabCo
         return true;
     }
 
-    // --- LOGIKA PARKOURA (TEŻ Z UPRAWNIENIAMI) ---
+    
 
     @EventHandler
     public void onInteract(PlayerInteractEvent event) {
         if (event.getAction() != Action.PHYSICAL || event.getClickedBlock() == null) return;
         Player p = event.getPlayer();
 
-        // Jeśli gracz nie ma uprawnień, parkour nie reaguje na niego
+        
         if (!p.hasPermission("pyparkour.use")) return;
 
         Location blockLoc = event.getClickedBlock().getLocation();
@@ -185,7 +184,7 @@ public class Main extends JavaPlugin implements Listener, CommandExecutor, TabCo
         }
     }
 
-    // --- SETUP MODE (Tylko Admin) ---
+   
     @EventHandler
     public void onBlockPlace(BlockPlaceEvent event) {
         Player p = event.getPlayer();
@@ -193,7 +192,7 @@ public class Main extends JavaPlugin implements Listener, CommandExecutor, TabCo
         if (!item.hasItemMeta() || !item.getItemMeta().hasDisplayName()) return;
         String name = item.getItemMeta().getDisplayName();
 
-        // Sprawdzamy czy ma itemy SETUP i czy ma permissję
+        
         if ((name.contains("START") || name.contains("META") || name.contains("CHECKPOINT"))) {
             if (!p.hasPermission("pyparkour.admin")) {
                 p.sendMessage(color("&cBrak uprawnien do tworzenia parkoura!"));
@@ -215,10 +214,7 @@ public class Main extends JavaPlugin implements Listener, CommandExecutor, TabCo
         }
     }
 
-    // --- RESZTA METOD (Void, Quit, Helpers) BEZ ZMIAN ---
-    // (Skopiuj je z poprzedniej wersji lub jeśli chcesz cały plik to napisz)
-    // Poniżej wklejam resztę dla pewności:
-
+   
     @EventHandler
     public void onMove(PlayerMoveEvent event) {
         Player p = event.getPlayer();
